@@ -1,6 +1,6 @@
 # Bug Tracker App
 
-Bug Tracker application built with the MERN stack. course.
+Bug Tracker application built with the MERN stack.
 
 ## Usage
 
