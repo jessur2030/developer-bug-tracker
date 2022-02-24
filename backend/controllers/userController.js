@@ -73,12 +73,21 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid credentials");
   }
 });
+
+// @desc    Gte current user
+// @route   /api/users/lme
+// @access  Private
+const getMe = asyncHandler(async (req, res) => {
+  const user = { id: req.user._id, name: req.user.name, email: req.user.email };
+  res.status(200).json(user);
+});
+
 const generateToken = (id) => {
-  //
+  //jwt sign
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     //token expires in 30 days
     expiresIn: "30d",
   });
 };
 
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser, getMe };
