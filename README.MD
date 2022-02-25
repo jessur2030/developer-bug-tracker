@@ -10,6 +10,13 @@ Bug Tracker application built with the MERN stack.
 npm install
 ```
 
+### Install client dependencies
+
+```bash
+cd frontend
+npm install
+```
+
 ### Run app in development (frontend & backend)
 
 ```bash
