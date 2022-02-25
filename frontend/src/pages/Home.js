@@ -5,7 +5,7 @@ function Home() {
     <>
       <section className="heading">
         <h1>Start Tracking your issues</h1>
-        <p>Please choose form an option below</p>
+        <p>Please choose an option below</p>
       </section>
 
       <Link to="/new-issue" className="btn btn-reverse btn-block">

@@ -65,7 +65,7 @@ function Login() {
           </div>
 
           <div className="form-group pb-2 ">
-            <button className="btn btn-block ">Continue</button>
+            <button className="btn btn-block ">Login</button>
           </div>
         </form>
       </section>
