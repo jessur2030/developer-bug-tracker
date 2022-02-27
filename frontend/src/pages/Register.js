@@ -3,7 +3,8 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../features/auth/authSlice";
-import Spinner from "../components/Spinner";
+import Loader from "../components/Loader/Loader";
+
 function Register() {
   //form data object for all fields
   const [formData, setFormData] = useState({
@@ -62,7 +63,7 @@ function Register() {
   };
 
   if (isLoading) {
-    return <Spinner />;
+    return <Loader />;
   }
   return (
     <>
@@ -70,7 +71,11 @@ function Register() {
         <h1>Create account</h1>
         <p>
           Have an account?{" "}
-          <Link to="/login" className="text-primary-color">
+          <Link
+            to="/login"
+            // style={{ textDecoration: "underline" }}
+            className="text-primary-color"
+          >
             Sign in
           </Link>
         </p>
