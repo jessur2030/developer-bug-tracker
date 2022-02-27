@@ -21,7 +21,7 @@ const registerUser = asyncHandler(async (req, res) => {
   //if user exits
   if (userExits) {
     res.status(400);
-    throw new Error("User already exits");
+    throw new Error("An account already exists with this email.");
   }
 
   //salt password
