@@ -60,7 +60,7 @@ function Login() {
         <h1>Login</h1>
         <p>
           Don't have an account?{" "}
-          <Link to="/login" className="">
+          <Link to="/login" className="text-primary-color">
             Sign up
           </Link>
         </p>
@@ -93,7 +93,7 @@ function Login() {
           </div>
 
           <div className="form-group pb-2 ">
-            <button className="btn btn-block ">Login</button>
+            <button className="btn btn-block btn-hover ">Login</button>
           </div>
         </form>
       </section>

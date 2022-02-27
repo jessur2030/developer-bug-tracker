@@ -70,7 +70,7 @@ function Register() {
         <h1>Create account</h1>
         <p>
           Have an account?{" "}
-          <Link to="/login" className="">
+          <Link to="/login" className="text-primary-color">
             Sign in
           </Link>
         </p>
@@ -127,7 +127,7 @@ function Register() {
           </div>
 
           <div className="form-group pb-2 ">
-            <button className="btn btn-block ">Continue</button>
+            <button className="btn btn-block btn-hover ">Continue</button>
           </div>
         </form>
       </section>

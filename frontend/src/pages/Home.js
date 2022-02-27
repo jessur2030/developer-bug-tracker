@@ -11,7 +11,7 @@ function Home() {
       <Link to="/new-issue" className="btn btn-reverse btn-block">
         <FaPlus /> Create new issue
       </Link>
-      <Link to="/issues" className="btn btn-block">
+      <Link to="/issues" className="btn btn-block btn-hover">
         <FaBug /> View all issues
       </Link>
     </>
