@@ -9,6 +9,7 @@ const issueSchema = mongoose.Schema(
       required: true,
       ref: "User",
     },
+
     issueType: {
       type: String,
       required: [true, "Please add an issue type"],
@@ -24,7 +25,7 @@ const issueSchema = mongoose.Schema(
     },
     status: {
       type: String,
-      required: true,
+      require: true,
       enum: ["new", "open", "closed"],
       default: "new",
     },
