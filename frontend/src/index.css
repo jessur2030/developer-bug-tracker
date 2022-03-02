@@ -142,7 +142,9 @@ h3 {
   font-family: inherit;
 }
 
-input:focus {
+input:focus,
+textarea:focus,
+select:focus {
   outline-color: #006aff;
 }
 

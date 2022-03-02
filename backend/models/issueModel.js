@@ -13,7 +13,7 @@ const issueSchema = mongoose.Schema(
     issueType: {
       type: String,
       required: [true, "Please add an issue type"],
-      enum: ["task", "bug", "request", "other"],
+      enum: ["Task", "Bug", "Request", "Other"],
     },
     title: {
       type: String,
@@ -32,7 +32,7 @@ const issueSchema = mongoose.Schema(
     priority: {
       type: String,
       required: true,
-      enum: ["high", "normal", "low"],
+      enum: ["High", "Normal", "Low"],
     },
   },
   {

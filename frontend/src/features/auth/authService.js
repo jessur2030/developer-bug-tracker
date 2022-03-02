@@ -2,46 +2,39 @@ import axios from "axios";
 
 const API_URL = "/api/users";
 
-//Register user
+//Register
 const register = async (userData) => {
-  //
+  //axios request /api/users
   const response = await axios.post(API_URL, userData);
-  console.log(response);
-  //if there is response.data
   if (response.data) {
-    //save user data to local storage
     localStorage.setItem("user", JSON.stringify(response.data));
-
-    //return user data
-    return response.data;
   }
+
+  //return user data & token
+  return response.data;
 };
 
-//Login user
+//Login
 const login = async (userData) => {
-  //login request
+  //axios request /api/users/login
   const response = await axios.post(`${API_URL}/login`, userData);
 
-  console.log(`login response:${response}`);
-
-  //if there is response.data
   if (response.data) {
-    localStorage.getItem("user", JSON.stringify(response.data));
-
-    //return user data
-    return response.data;
+    localStorage.setItem("user", JSON.stringify(response.data));
   }
+  //return user data & token
+
+  return response.data;
 };
 
 //Logout user
 const logout = () => localStorage.removeItem("user");
 
-//authService
+//
 const authService = {
   register,
-  logout,
   login,
+  logout,
 };
 
-//export all functions in authService
 export default authService;
