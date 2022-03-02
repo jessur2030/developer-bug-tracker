@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { createIssue, reset } from "../features/issues/issueSlice";
 import Loader from "../components/Loader/Loader";
 import { useEffect } from "react";
+import BackButton from "../components/BackButton";
 // import { FaPlus } from "react-icons/fa";
 
 function NewIssue() {
@@ -52,6 +53,7 @@ function NewIssue() {
   }
   return (
     <>
+      <BackButton url="/" />
       <section className="heading">
         <h1>Create new Issue</h1>
         {/* <p>Please fill out the form bellow</p> */}
@@ -119,8 +121,8 @@ function NewIssue() {
               <option value="High">High</option>
             </select>
           </div>
-          <div className="form-group">
-            <button className="btn btn-block">Add Issue</button>
+          <div className="form-group pb-2 ">
+            <button className="btn btn-block ">Add Issue</button>
           </div>
         </form>
       </section>
