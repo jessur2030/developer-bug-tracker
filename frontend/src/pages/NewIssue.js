@@ -11,16 +11,15 @@ import BackButton from "../components/BackButton";
 function NewIssue() {
   const { user } = useSelector((state) => state.auth);
   const { isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.issue
+    (state) => state.issues
   );
 
-  console.log(isError);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [issueType, setIssueType] = useState("Task");
+  const [issueType, setIssueType] = useState("Bug");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState("Normal");
+  const [priority, setPriority] = useState("Critical");
 
   //initialize dispatch
   const dispatch = useDispatch();
@@ -47,6 +46,9 @@ function NewIssue() {
     //
   };
 
+  console.log(issueType);
+  console.log(priority);
+
   //if loading: show loader
   if (isLoading) {
     return <Loader />;
@@ -61,43 +63,42 @@ function NewIssue() {
 
       <section className="form">
         <div className="form-group">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Developer</label>
           <input type="text" name="name" id="name" value={name} disabled />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Developer Email</label>
           <input type="email" name="email" id="email" value={email} disabled />
         </div>
 
         <form action="" onSubmit={onSubmit}>
           <div className="form-group">
-            <label htmlFor="issueType">Issue Type</label>
+            <label htmlFor="issueType">Issue</label>
             <select
               name="issueType"
               id="issueType"
               value={issueType}
               onChange={(e) => setIssueType(e.target.value)}
             >
-              <option value="Task">Task</option>
               <option value="Bug">Bug</option>
-              <option value="Request">Request</option>
+              <option value="Task">Task</option>
               <option value="Other">Other</option>
             </select>
           </div>
 
           <div className="form-group">
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Item Name</label>
             <input
               type="text"
               name="title"
               id="title"
-              placeholder="Title"
+              placeholder="Item name"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">Bug Description</label>
             <textarea
               name="description"
               id="description"
@@ -116,9 +117,10 @@ function NewIssue() {
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
             >
-              <option value="Low">Low</option>
-              <option value="Normal">Normal</option>
+              <option value="Critical">Critical</option>
               <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
             </select>
           </div>
           <div className="form-group pb-2 ">

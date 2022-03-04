@@ -9,6 +9,7 @@
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 a {
@@ -199,9 +200,19 @@ select:focus {
 }
 
 .btn-danger {
-  background: darkred;
+  background: #d83a52;
   border: none;
 }
+
+/* --color-error-hover: #b63546;
+--color-error-highlight: #f4c3cb; 
+    --color-basic_blue: #0073ea;
+    --color-egg_yolk: #ffcb00;
+    --color-egg_yolk-hover: #c29e11;
+    --color-done-green: #00c875;
+    --color-done-green-hover: #0f9b63;
+    --color-done-green-selected: #80e3ba;
+*/
 
 .btn-back {
   width: 150px;
@@ -213,31 +224,31 @@ select:focus {
   background-color: #05c;
 }
 
-.ticket-created {
+.issue-created {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   padding: 50px;
 }
 
-.ticket-number {
+.issue-number {
   margin-bottom: 30px;
 }
 
-.ticket-number h2 {
+.issue-number h2 {
   font-size: 2.3rem;
   margin-bottom: 10px;
 }
 
-.ticket-number p {
+.issue-number p {
   font-size: 1.3rem;
 }
 
-.ticket-info {
+.issue-info {
   font-size: 1.3rem;
 }
 
-.ticket,
-.ticket-headings {
+.issue,
+.issue-headings {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -250,7 +261,7 @@ select:focus {
   text-align: center;
 }
 
-.ticket-headings {
+.issue-headings {
   font-weight: 700;
 }
 
@@ -258,52 +269,83 @@ select:focus {
   background-color: #333;
   color: #fff;
   width: 100px;
-  padding: 0 20px;
+  padding: 4px 20px;
   justify-self: center;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 4px;
+  font-size: 14px;
   text-align: center;
 }
 
 .status-new {
-  background-color: green;
+  background-color: #006aff;
   color: #fff;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 .status-open {
-  background-color: steelblue;
+  background-color: #579bfc;
   color: #fff;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
-.status-closed {
-  background-color: darkred;
+.status-fixed {
+  background-color: #d83a52;
   color: #fff;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
-.ticket-page {
+/* priority styles */
+.priority {
+  background-color: #c4c4c4;
+  color: #fff;
+  width: 100px;
+  padding: 4px 20px;
+  justify-self: center;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.priority-Critical {
+  background-color: #d83a52;
+  color: #fff;
+  /* border-radius: 10px; */
+}
+.priority-High {
+  background-color: #ffcb00;
+  color: #fff;
+}
+.priority-Medium {
+  background-color: #579bfc;
+  color: #fff;
+}
+.priority-Low {
+  background-color: #00c875;
+  color: #fff;
+  /* border-radius: 10px; */
+}
+
+.issue-page {
   position: relative;
   text-align: left;
 }
 
-.ticket-page h2 {
+.issue-page h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.ticket-page .btn {
+.issue-page .btn {
   margin-bottom: 30px;
 }
 
-.ticket-page .btn-block {
+.issue-page .btn-block {
   width: 100%;
   margin-top: 30px;
 }
 
-.ticket-desc {
+.issue-desc {
   margin: 20px 0;
   font-size: 17px;
   background-color: #f4f4f4;
@@ -405,7 +447,7 @@ footer {
     width: 90%;
   }
 
-  .ticket-created h2,
+  .issue-created h2,
   .heading h1 {
     font-size: 2rem;
   }

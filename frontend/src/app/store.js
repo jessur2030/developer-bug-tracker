@@ -4,6 +4,6 @@ import issueReducer from "../features/issues/issueSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    issue: issueReducer,
+    issues: issueReducer,
   },
 });

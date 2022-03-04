@@ -12,8 +12,8 @@ const issueSchema = mongoose.Schema(
 
     issueType: {
       type: String,
-      required: [true, "Please add an issue type"],
-      enum: ["Task", "Bug", "Request", "Other"],
+      required: [true, "Please add an issue"],
+      enum: ["Bug", "Task", "Other"],
     },
     title: {
       type: String,
@@ -26,13 +26,13 @@ const issueSchema = mongoose.Schema(
     status: {
       type: String,
       require: true,
-      enum: ["new", "open", "closed"],
+      enum: ["new", "open", "fixed"],
       default: "new",
     },
     priority: {
       type: String,
       required: true,
-      enum: ["High", "Normal", "Low"],
+      enum: ["Critical", "High", "Medium", "Low"],
     },
   },
   {

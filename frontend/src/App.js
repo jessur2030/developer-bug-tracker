@@ -7,6 +7,9 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Header from "./components/Header";
 import NewIssue from "./pages/NewIssue";
+import Issues from "./pages/Issues";
+import Issue from "./pages/Issue";
+
 function App() {
   return (
     <>
@@ -20,6 +23,12 @@ function App() {
 
             <Route path="/new-issue" element={<PrivateRoute />}>
               <Route path="/new-issue" element={<NewIssue />} />
+            </Route>
+            <Route path="/issues" element={<PrivateRoute />}>
+              <Route path="/issues" element={<Issues />} />
+            </Route>
+            <Route path="/issue/:id" element={<PrivateRoute />}>
+              <Route path="/issue/:id" element={<Issue />} />
             </Route>
           </Routes>
         </div>
