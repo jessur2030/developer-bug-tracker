@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader/Loader";
 import BackButton from "../components/BackButton";
-import IssueItem from "../components/IssueItem";
+// import IssueItem from "../components/IssueItem";
+import IssueCardItem from "../components/IssueCardItem";
 
 function Issues() {
   const { issues, isLoading, isSuccess, isError, message } = useSelector(
@@ -33,7 +34,7 @@ function Issues() {
   }
   return (
     <>
-      <BackButton url="/" />
+      {/* <BackButton url="/" />
       <div>
         <div className="issue-headings">
           <div>Date</div>
@@ -43,6 +44,18 @@ function Issues() {
         </div>
         {issues.map((issue) => (
           <IssueItem key={issue._id} issue={issue} />
+        ))}
+      </div> */}
+      <BackButton url="/" />
+      <div className="cards">
+        {/* <div className="issue-headings">
+          <div>Date</div>
+          <div>Issue</div>
+          <div>Status</div>
+          <div></div>
+        </div> */}
+        {issues.map((issue) => (
+          <IssueCardItem key={issue._id} issue={issue} />
         ))}
       </div>
     </>

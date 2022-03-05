@@ -5,17 +5,26 @@ import { getIssue, closeIssue, reset } from "../features/issues/issueSlice";
 import { useParams, useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Loader from "../components/Loader/Loader";
-import { Button } from "bootstrap";
+// import { capFirstLetter } from "../utils/utils";
 
 function Issue() {
   const { issue, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.issues
   );
 
+  console.log(issue.status);
+
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id: issueId } = useParams();
+
+  //  date options argument
+  let options = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
 
   useEffect(() => {}, []);
 
@@ -46,9 +55,21 @@ function Issue() {
   return (
     <div className="issue-page">
       <header className="issue-header">
-        <BackButton url="/issues" />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <BackButton url="/issues" />
+          <span className={`status status-${issue.status}`}>
+            {/* {capFirstLetter(issue.status)} */}
+            {issue.status}
+            {/* {issue.status && capFirstLetter(issue.status)} */}
+          </span>
+        </div>
         {/* <h2>Issue Id: {issue._id}</h2> */}
-        <span className={`status status-${issue.status}`}>{issue.status}</span>
         <h3>
           Priority:{" "}
           <span className={`priority priority-${issue.priority}`}>
@@ -56,7 +77,8 @@ function Issue() {
           </span>{" "}
         </h3>
         <h3>
-          Report Date: {new Date(issue.createdAt).toLocaleString("en-US")}{" "}
+          Report Date:{" "}
+          {new Date(issue.createdAt).toLocaleString("en-US", options)}{" "}
         </h3>
         <h2>{issue.issueType}</h2>
         <h3>{issue.title}</h3>
@@ -66,12 +88,13 @@ function Issue() {
           <p>{issue.description}</p>
         </div>
       </header>
-
-      {issue.status !== "fixed" && (
-        <button onClick={onIssueClose} className="btn btn-block btn-danger">
-          Fixed
-        </button>
-      )}
+      <div className="pb-sm ">
+        {issue.status !== "fixed" && (
+          <button onClick={onIssueClose} className="btn btn-block btn-hover ">
+            Fixed
+          </button>
+        )}
+      </div>
     </div>
   );
 }

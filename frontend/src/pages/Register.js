@@ -131,7 +131,7 @@ function Register() {
             />
           </div>
 
-          <div className="form-group pb-2 ">
+          <div className="form-group pb-sm  ">
             <button className="btn btn-block btn-hover ">Continue</button>
           </div>
         </form>
