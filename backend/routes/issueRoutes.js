@@ -9,6 +9,10 @@ const {
 } = require("../controllers/issueController");
 const { protect } = require("../middleware/authMiddleware");
 
+//Re-route into note router
+const noteRouter = require("./noteRoutes.js");
+router.use("/:issueId/notes", noteRouter);
+
 router.route("/").get(protect, getIssues).post(protect, createIssue);
 
 router
