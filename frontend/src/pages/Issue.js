@@ -1,15 +1,23 @@
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
-import { getIssue, closeIssue, reset } from "../features/issues/issueSlice";
+import { getIssue, closeIssue } from "../features/issues/issueSlice";
+import { getNotes, reset as noteReset } from "../features/notes/noteSlice";
 import { useParams, useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Loader from "../components/Loader/Loader";
+import NoteItem from "../components/NoteItem";
 // import { capFirstLetter } from "../utils/utils";
 
 function Issue() {
+  //get from issues state
   const { issue, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.issues
+  );
+
+  //get from notes state
+  const { notes, isLoading: notesIsLoading } = useSelector(
+    (state) => state.notes
   );
 
   console.log(issue.status);
@@ -33,6 +41,7 @@ function Issue() {
       toast.error(isError);
     }
     dispatch(getIssue(issueId));
+    dispatch(getNotes(issueId));
     // eslint-disable-next-line
   }, [isError, isError, issueId]);
 
@@ -44,7 +53,7 @@ function Issue() {
     navigate("/issues");
   };
 
-  if (isLoading) {
+  if (isLoading || notesIsLoading) {
     return <Loader />;
   }
 
@@ -87,7 +96,12 @@ function Issue() {
           <h3>Bug Description</h3>
           <p>{issue.description}</p>
         </div>
+        <h2>Notes</h2>
       </header>
+
+      {notes.map((note) => (
+        <NoteItem key={note._id} note={note} />
+      ))}
       <div className="pb-sm ">
         {issue.status !== "fixed" && (
           <button onClick={onIssueClose} className="btn btn-block btn-hover ">

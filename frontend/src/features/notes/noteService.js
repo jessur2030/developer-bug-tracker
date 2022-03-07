@@ -21,5 +21,4 @@ const getNotes = async (issueId, token) => {
 const noteService = {
   getNotes,
 };
-
 export default noteService;
