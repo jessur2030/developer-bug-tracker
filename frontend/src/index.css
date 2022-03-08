@@ -176,29 +176,35 @@ h3 {
 
 /* hero section start*/
 
-/* .hero {
-  background-color: cyan;
-
-  display: grid;
-  align-content: center;
-} */
-
+.hero {
+  /* background-color: #0151cc;
+  color: #fff; */
+  min-height: 400px;
+}
 .hero h1 {
-  font-size: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.2;
+  /* font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
-  padding: 0 20px;
+  padding: 0 20px; */
 }
 
 .hero img {
   max-width: 400px;
-  /* width: 100%; */
 }
-.hero-container {
+
+.hero .hero-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+/* .hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
 
 /* hero section ends */
 
@@ -804,8 +810,10 @@ footer {
 @media (max-width: 768px) {
   .hero .hero-container {
     flex-direction: column;
+    padding-top: 20px;
     text-align: center;
   }
+
   .btn {
     font-size: 14px;
   }
