@@ -499,6 +499,7 @@ select:focus {
   padding: 20px;
   margin-bottom: 20px;
   position: relative;
+  overflow-wrap: break-word;
 }
 
 .note-head {
@@ -697,7 +698,7 @@ footer {
 
 .note__modal-title {
   font-size: var(--h3-font-size);
-  color: var(--first-color);
+  color: var(--blue-color);
   font-weight: var(--font-medium);
   margin-bottom: 1rem;
 }
@@ -720,7 +721,7 @@ footer {
 
 .note__modal-icon {
   font-size: 1rem;
-  color: var(--first-color);
+  color: var(--blue-color);
   /* margin-right: var(--mb-0-25); */
 }
 
@@ -735,7 +736,7 @@ footer {
   /* right: 1.5rem; */
   left: 1.5rem;
   font-size: 1rem;
-  color: var(--first-color);
+  color: var(--blue-color);
   cursor: pointer;
 }
 

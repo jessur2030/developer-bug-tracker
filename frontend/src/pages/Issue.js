@@ -4,7 +4,11 @@ import { toast } from "react-toastify";
 import Modal from "../components/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { getIssue, closeIssue } from "../features/issues/issueSlice";
-import { getNotes, reset as noteReset } from "../features/notes/noteSlice";
+import {
+  getNotes,
+  createNote,
+  reset as noteReset,
+} from "../features/notes/noteSlice";
 import { useParams, useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Loader from "../components/Loader/Loader";
@@ -15,18 +19,15 @@ import { FaPlus, FaEllipsisV, FaRegPaperPlane } from "react-icons/fa";
 function Issue() {
   //open modal state
   const [modalOpen, setModalOpen] = useState(false);
-
   const [noteText, setNoteText] = useState("");
 
   //get from issues state
-  const { issue, isLoading, isSuccess, isError, message } = useSelector(
+  const { issue, isLoading, isError, message } = useSelector(
     (state) => state.issues
   );
 
   //get from notes state
-  const { notes, isLoading: notesIsLoading } = useSelector(
-    (state) => state.notes
-  );
+  const { notes } = useSelector((state) => state.notes);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -40,16 +41,15 @@ function Issue() {
     day: "numeric",
   };
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     if (isError) {
-      toast.error(isError);
+      toast.error(message);
     }
+
     dispatch(getIssue(issueId));
     dispatch(getNotes(issueId));
     // eslint-disable-next-line
-  }, [isError, isError, issueId]);
+  }, [isError, message, issueId]);
 
   //on issue close
   const onIssueClose = () => {
@@ -62,7 +62,8 @@ function Issue() {
   //Create note
   const onNoteSubmit = (e) => {
     e.preventDefault();
-    console.log("add notes");
+    dispatch(createNote({ noteText, issueId }));
+    setNoteText("");
     setModalOpen(false);
   };
 
@@ -70,7 +71,7 @@ function Issue() {
   // const openModal = () => setModalIsOpen(true);
   // const closeModal = () => setModalIsOpen(false);
 
-  if (isLoading || notesIsLoading) {
+  if (isLoading) {
     return <Loader />;
   }
 
@@ -157,7 +158,7 @@ function Issue() {
                 name="noteText"
                 id="noteText"
                 className="form-control"
-                placeholder="Add a note..."
+                placeholder="Write a note..."
                 value={noteText}
                 cols="10"
                 rows="5"
@@ -171,47 +172,8 @@ function Issue() {
               </button>
             </div>
           </form>
-          {/* <div className="note__modal-description">
-            <p>The next page looks amazing. Hope you want to go there!</p>
-          </div> */}
         </Modal>
       )}
-
-      {/* 
-      {issue.status !== "fixed" && (
-        <button onClick={openModal} className="btn">
-          <FaPlus /> Add note
-        </button>
-      )} */}
-
-      {/* <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Add Note"
-      >
-        <h2>Add Note</h2>
-        <button className="btn-close" onClick={closeModal}>
-          <FaTimes />
-        </button>
-
-        <form onSubmit={onNoteSubmit}>
-          <div className="form-group">
-            <textarea
-              name="noteText"
-              id="noteText"
-              className="form-control"
-              placeholder="Add a note... "
-              onChange={(e) => setNoteText(e.target.value)}
-            ></textarea>
-          </div>
-          <div className="form-group">
-            <button className="btn">
-              <FaRegPaperPlane /> Post
-            </button>
-          </div>
-        </form>
-      </Modal> */}
 
       {notes.map((note) => (
         <NoteItem key={note._id} note={note} />
@@ -219,7 +181,7 @@ function Issue() {
       <div className="pb-sm ">
         {issue.status !== "fixed" && (
           <button onClick={onIssueClose} className="btn btn-block btn-hover ">
-            Closed
+            Close Issue
           </button>
         )}
       </div>
