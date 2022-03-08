@@ -8,10 +8,14 @@
 
 :root {
   /*========== Colors ==========*/
+  --body-color: hsl(240, 60%, 99%);
+  --container-color: hsl(0, 0%, 100%);
   --blue-color: #006aff;
   --blue-hover-color: #05c;
   --scroll-bar-color: hsl(240, 12%, 48%);
   --scroll-thumb-color: hsl(240, 12%, 36%);
+  --first-color: hsl(240, 100%, 62%);
+
   --title-color: hsl(240, 8%, 15%);
   --text-color: hsl(240, 8%, 45%);
   --text-color-light: hsl(240, 8%, 65%);
@@ -189,8 +193,7 @@ h3 {
 .hero img {
   max-width: 400px;
 }
-.hero-container{
-
+.hero-container {
 }
 .hero .hero-container {
   display: flex;
@@ -258,6 +261,32 @@ select:focus {
 }
 
 .back__button:hover {
+  color: var(--blue-hover-color);
+}
+
+/* add button styles */
+.add__button-icon {
+  font-size: 1rem;
+  transition: 0.4s;
+}
+
+.add__button {
+  color: var(--blue-color);
+  font-size: var(--font-medium);
+  width: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.25rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+/* .add__button:hover .add__button-icon {
+  transform: rotate(-90deg);
+} */
+
+.add__button:hover {
   color: var(--blue-hover-color);
 }
 
@@ -456,10 +485,10 @@ select:focus {
 
 .issue-desc {
   margin: 20px 0;
-  font-size: 17px;
-  background-color: #f4f4f4;
-  border: 1px #ccc solid;
-  padding: 10px 15px;
+  font-size: 1rem;
+  /* background-color: #f4f4f4; */
+  /* border: 1px #ccc solid; */
+  /* padding: 10px 15px; */
   border-radius: 5px;
 }
 
@@ -621,6 +650,102 @@ footer {
   gap: 1rem;
 }
 
+/*========== NOTE MODAL ==========*/
+
+.note__icon {
+  font-size: 1rem;
+  transition: 0.4s;
+}
+
+.note__modal {
+  position: fixed;
+  inset: 0;
+  /* top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  /* padding: 0 1rem; */
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem 1rem;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+  z-index: 1000;
+}
+
+.note__modal-content {
+  position: relative;
+  width: 500px;
+
+  /* background-color: var(--container-color); */
+  background-color: var(--body-color);
+  padding: 3rem 1.5rem 2.5rem;
+  /* padding: 4.5rem 1.5rem 2.5rem; */
+
+  border-radius: 1.5rem;
+}
+
+.note__modal-title,
+.note__modal-description {
+  text-align: center;
+}
+
+.note__modal-title {
+  font-size: var(--h3-font-size);
+  color: var(--first-color);
+  font-weight: var(--font-medium);
+  margin-bottom: 1rem;
+}
+
+.note__modal-description {
+  font-size: var(--small-font-size);
+  margin-bottom: 2rem;
+}
+
+.note__modal-list {
+  display: grid;
+  row-gap: 0.75rem;
+}
+
+.note__modal-item {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 0.5rem;
+}
+
+.note__modal-icon {
+  font-size: 1rem;
+  color: var(--first-color);
+  /* margin-right: var(--mb-0-25); */
+}
+
+.note__modal-info {
+  /* font-size: var(--small-font-size); */
+  font-size: 1rem;
+}
+
+.note__modal-close {
+  position: absolute;
+  top: 1.5rem;
+  /* right: 1.5rem; */
+  left: 1.5rem;
+  font-size: 1rem;
+  color: var(--first-color);
+  cursor: pointer;
+}
+
+/* Active Modal */
+
+.active-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
 /*========== SCROLL BAR ==========*/
 ::-webkit-scrollbar {
   width: 0.5rem;
@@ -636,9 +761,24 @@ footer {
   background-color: var(--text-color-light);
 }
 
+/*==================== BREAKPOINTS ====================*/
+/* For small devices */
+@media screen and (max-width: 320px) {
+  /* .note__modal {
+    padding: 0 0.5rem;
+  } */
+}
+
 @media screen and (max-width: 480px) {
   .cards {
     align-items: flex-start;
+  }
+
+  .note__modal-content {
+    width: 320px;
+  }
+  .note__modal-description {
+    padding: 0 3.5rem;
   }
 }
 
@@ -665,5 +805,15 @@ footer {
 
   .heading p {
     font-size: 1.5rem;
+  }
+
+  /* .note__modal-content {
+    width: 26.25rem;
+  } */
+}
+
+@media (min-width: 968px) {
+  .note__modal-content {
+    width: 720px;
   }
 }
