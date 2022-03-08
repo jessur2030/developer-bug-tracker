@@ -43,7 +43,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 /* Make images easier to work with */
@@ -97,9 +97,9 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 15px 0;
   border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 
 .header ul {
@@ -176,26 +176,25 @@ h3 {
 
 /* hero section start*/
 
-.hero {
-  /* background-color: #0151cc;
-  color: #fff; */
-  min-height: 400px;
+/* .hero {
+  background-color: cyan;
+
   display: grid;
   align-content: center;
-}
+} */
 
 .hero h1 {
-  font-size: 3rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 700;
   line-height: 1.2;
+  padding: 0 20px;
 }
 
 .hero img {
   max-width: 400px;
+  /* width: 100%; */
 }
 .hero-container {
-}
-.hero .hero-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -309,15 +308,28 @@ select:focus {
 .btn-action-container {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   margin: 20px 0;
 }
 .btn-action {
-  min-width: 207px;
+  padding: 10px 15px;
+  border: 1px solid #006aff;
+  border-radius: 5px;
+  background-color: #006aff;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.1s;
 }
 
-.btn svg {
-  margin-right: 8px;
+.btn-action svg {
+  margin-right: 3px;
 }
 
 .btn-reverse {
@@ -764,7 +776,13 @@ footer {
 
 /*==================== BREAKPOINTS ====================*/
 /* For small devices */
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) {
+  .header ul li {
+    font-size: 0.875rem;
+  }
+  .logo {
+    font-size: 1rem;
+  }
   /* .note__modal {
     padding: 0 0.5rem;
   } */

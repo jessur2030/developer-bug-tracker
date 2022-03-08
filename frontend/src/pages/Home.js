@@ -5,7 +5,7 @@ function Home() {
     <>
       <section className="hero">
         {" "}
-        <div className="hero-container">
+        <div cla="hero-container">
           <div>
             <h1>Start Tracking your issues</h1>
             <p>
@@ -13,10 +13,13 @@ function Home() {
               tracked, bug sets, and collaborate with your entire team on code.
             </p>
             <div className="btn-action-container">
-              <Link to="/issues" className="btn btn-hover btn-action">
+              <Link to="/issues" className="btn-action btn-hover btn-action">
                 <FaBug /> View all issues
               </Link>
-              <Link to="/new-issue" className="btn btn-reverse btn-action ">
+              <Link
+                to="/new-issue"
+                className="btn-action btn-reverse btn-action "
+              >
                 <FaPlus /> Create new issue
               </Link>
             </div>

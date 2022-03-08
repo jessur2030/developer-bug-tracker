@@ -21,7 +21,7 @@ function Header() {
         <FaBug />
 
         <Link style={{ paddingLeft: "5px" }} to="/">
-          Bug Tracker
+          BugTracker
         </Link>
       </div>
       <ul>
