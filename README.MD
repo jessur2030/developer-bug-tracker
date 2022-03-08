@@ -2,6 +2,8 @@
 
 Bug Tracker application built with the MERN stack.
 
+## [Live Site](https://jessusrbugtracker.herokuapp.com/)
+
 ## Usage
 
 ### Install backend dependencies
