@@ -6,6 +6,11 @@ Bug Tracker application built with the MERN stack.
 
 ## Usage
 
+### Test user login
+
+- Email: merry@gmail.com
+- Pass: 123456
+
 ### Install backend dependencies
 
 ```bash

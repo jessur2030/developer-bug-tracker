@@ -57,7 +57,6 @@ const loginUser = asyncHandler(async (req, res) => {
   //get user email & password from the body
   const { email, password } = req.body;
 
-  //from User model: find user by email
   const user = await User.findOne({ email });
   //if user is found: compare the plain text password to hashed password match
   if (user && (await bcrypt.compare(password, user.password))) {
