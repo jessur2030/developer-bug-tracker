@@ -1,12 +1,10 @@
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { createIssue, reset } from "../features/issues/issueSlice";
-import Loader from "../components/Loader/Loader";
-import { useEffect } from "react";
-import BackButton from "../components/BackButton";
-// import { FaPlus } from "react-icons/fa";
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { createIssue, reset } from '../features/issues/issueSlice';
+import { useEffect } from 'react';
+import BackButton from '../components/BackButton';
 
 function NewIssue() {
   const { user } = useSelector((state) => state.auth);
@@ -16,43 +14,31 @@ function NewIssue() {
 
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [issueType, setIssueType] = useState("Bug");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState("Critical");
+  const [issueType, setIssueType] = useState('Bug');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [priority, setPriority] = useState('Critical');
 
-  //initialize dispatch
   const dispatch = useDispatch();
-  //initialize navigate
   const navigate = useNavigate();
 
-  //use Effect
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
     if (isSuccess) {
       dispatch(reset());
-      navigate("/issues");
+      navigate('/issues');
     }
 
     dispatch(reset());
   }, [dispatch, isError, message, isSuccess, navigate]);
 
-  //on submit
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(createIssue({ issueType, title, description, priority }));
-    //
   };
 
-  console.log(issueType);
-  console.log(priority);
-
-  //if loading: show loader
-  if (isLoading) {
-    return <Loader />;
-  }
   return (
     <>
       <BackButton url="/" />
@@ -64,11 +50,25 @@ function NewIssue() {
       <section className="form">
         <div className="form-group">
           <label htmlFor="name">Developer</label>
-          <input type="text" name="name" id="name" value={name} disabled />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            value={name}
+            disabled
+          />
         </div>
         <div className="form-group">
           <label htmlFor="email">Developer Email</label>
-          <input type="email" name="email" id="email" value={email} disabled />
+          <input
+            type="email"
+            required
+            name="email"
+            id="email"
+            value={email}
+            disabled
+          />
         </div>
 
         <form action="" onSubmit={onSubmit}>
@@ -78,6 +78,7 @@ function NewIssue() {
               name="issueType"
               id="issueType"
               value={issueType}
+              required
               onChange={(e) => setIssueType(e.target.value)}
             >
               <option value="Bug">Bug</option>
@@ -92,6 +93,7 @@ function NewIssue() {
               type="text"
               name="title"
               id="title"
+              required
               placeholder="Item name"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -102,6 +104,7 @@ function NewIssue() {
             <textarea
               name="description"
               id="description"
+              required
               className="form-control"
               placeholder="Description"
               value={description}
@@ -115,6 +118,7 @@ function NewIssue() {
               id="priority"
               className="form-control"
               value={priority}
+              required
               onChange={(e) => setPriority(e.target.value)}
             >
               <option value="Critical">Critical</option>
