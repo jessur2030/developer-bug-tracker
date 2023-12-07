@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
-import { capFirstLetter } from "../utils/utils";
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 
 function IssueCardItem({ issue }) {
   //  date options argument
   let options = {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   };
   return (
     <div className="issue__card">
@@ -25,7 +24,7 @@ function IssueCardItem({ issue }) {
       {/* <div className="issue__card-data-container"> */}
       <div className="issue">
         <span className="issue__card-data">
-          {new Date(issue.createdAt).toLocaleString("en-US", options)}
+          {new Date(issue.createdAt).toLocaleString('en-US', options)}
         </span>
         <span className="issue__card-data">{issue.issueType}</span>
         {/* <div>{new Date(issue.createdAt).toLocaleString("en-US", options)}</div> */}

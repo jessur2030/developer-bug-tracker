@@ -3,16 +3,12 @@ import { toast } from 'react-toastify';
 import Modal from '../components/Modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { getIssue, closeIssue } from '../features/issues/issueSlice';
-import {
-  getNotes,
-  createNote,
-  reset as noteReset,
-} from '../features/notes/noteSlice';
+import { getNotes, createNote } from '../features/notes/noteSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Loader from '../components/Loader/Loader';
 import NoteItem from '../components/NoteItem';
-import { FaPlus, FaEllipsisV, FaRegPaperPlane } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 
 function Issue() {
   //open modal state
@@ -45,8 +41,7 @@ function Issue() {
     }
     dispatch(getIssue(issueId));
     dispatch(getNotes(issueId));
-    // eslint-disable-next-line
-  }, [isError, message, issueId]);
+  }, [isError, message, issueId, dispatch]);
 
   //on issue close
   const onIssueClose = () => {

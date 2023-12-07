@@ -1,17 +1,13 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getIssues, reset } from "../features/issues/issueSlice";
-import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import Loader from "../components/Loader/Loader";
-import BackButton from "../components/BackButton";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIssues, reset } from '../features/issues/issueSlice';
+import Loader from '../components/Loader/Loader';
+import BackButton from '../components/BackButton';
 // import IssueItem from "../components/IssueItem";
-import IssueCardItem from "../components/IssueCardItem";
+import IssueCardItem from '../components/IssueCardItem';
 
 function Issues() {
-  const { issues, isLoading, isSuccess, isError, message } = useSelector(
-    (state) => state.issues
-  );
+  const { issues, isLoading, isSuccess } = useSelector((state) => state.issues);
 
   //initialize dispatch
   const dispatch = useDispatch();

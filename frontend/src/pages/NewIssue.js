@@ -8,12 +8,10 @@ import BackButton from '../components/BackButton';
 
 function NewIssue() {
   const { user } = useSelector((state) => state.auth);
-  const { isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.issues
-  );
+  const { isError, isSuccess, message } = useSelector((state) => state.issues);
 
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
+  const [name] = useState(user.name);
+  const [email] = useState(user.email);
   const [issueType, setIssueType] = useState('Bug');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
