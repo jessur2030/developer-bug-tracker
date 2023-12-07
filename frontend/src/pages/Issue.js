@@ -1,25 +1,23 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-// import Modal from "react-modal";
-import Modal from "../components/Modal";
-import { useSelector, useDispatch } from "react-redux";
-import { getIssue, closeIssue } from "../features/issues/issueSlice";
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import Modal from '../components/Modal';
+import { useSelector, useDispatch } from 'react-redux';
+import { getIssue, closeIssue } from '../features/issues/issueSlice';
 import {
   getNotes,
   createNote,
   reset as noteReset,
-} from "../features/notes/noteSlice";
-import { useParams, useNavigate } from "react-router-dom";
-import BackButton from "../components/BackButton";
-import Loader from "../components/Loader/Loader";
-import NoteItem from "../components/NoteItem";
-import { FaPlus, FaEllipsisV, FaRegPaperPlane } from "react-icons/fa";
-// import { capFirstLetter } from "../utils/utils";
+} from '../features/notes/noteSlice';
+import { useParams, useNavigate } from 'react-router-dom';
+import BackButton from '../components/BackButton';
+import Loader from '../components/Loader/Loader';
+import NoteItem from '../components/NoteItem';
+import { FaPlus, FaEllipsisV, FaRegPaperPlane } from 'react-icons/fa';
 
 function Issue() {
   //open modal state
   const [modalOpen, setModalOpen] = useState(false);
-  const [noteText, setNoteText] = useState("");
+  const [noteText, setNoteText] = useState('');
 
   //get from issues state
   const { issue, isLoading, isError, message } = useSelector(
@@ -36,16 +34,15 @@ function Issue() {
 
   //  date options argument
   let options = {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   };
 
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
-
     dispatch(getIssue(issueId));
     dispatch(getNotes(issueId));
     // eslint-disable-next-line
@@ -55,28 +52,22 @@ function Issue() {
   const onIssueClose = () => {
     //
     dispatch(closeIssue(issueId));
-    toast.success("Issue fixed 👍🐱‍👤");
-    navigate("/issues");
+    toast.success('Issue fixed 👍🐱‍👤');
+    navigate('/issues');
   };
 
   //Create note
   const onNoteSubmit = (e) => {
     e.preventDefault();
     dispatch(createNote({ noteText, issueId }));
-    setNoteText("");
+    setNoteText('');
     setModalOpen(false);
   };
-
-  //Open / close modal
-  // const openModal = () => setModalIsOpen(true);
-  // const closeModal = () => setModalIsOpen(false);
-
   if (isLoading) {
     return <Loader />;
   }
 
   if (isError) {
-    ////
     return <h3>Look's Like Something Went Wrong!</h3>;
   }
   return (
@@ -84,57 +75,43 @@ function Issue() {
       <header className="issue-header">
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <BackButton url="/issues" />
           <span className={`status status-${issue.status}`}>
-            {/* {capFirstLetter(issue.status)} */}
             {issue.status}
-            {/* {issue.status && capFirstLetter(issue.status)} */}
           </span>
         </div>
-        {/* <h2>Issue Id: {issue._id}</h2> */}
-        {/* <h3>
-          Report Date:{" "}
-          {new Date(issue.createdAt).toLocaleString("en-US", options)}{" "}
-        </h3> */}
-        {new Date(issue.createdAt).toLocaleString("en-US", options)}{" "}
+        {new Date(issue.createdAt).toLocaleString('en-US', options)}{' '}
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <h2>{issue.issueType}</h2>
           <span className={`priority priority-${issue.priority}`}>
-            {issue.priority}{" "}
-          </span>{" "}
+            {issue.priority}{' '}
+          </span>{' '}
         </div>
-        {/* <h3>
-          <span className={`priority priority-${issue.priority}`}>
-            {issue.priority}{" "}
-          </span>{" "}
-        </h3> */}
         <h3>{issue.title}</h3>
-        {/* <hr /> */}
         <div className="issue-desc">
           <p>{issue.description}</p>
         </div>
       </header>
-
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
         <h3>Notes</h3>
-        {issue.status !== "fixed" && (
+        {issue.status !== 'fixed' && (
           <span
             onClick={() => {
               setModalOpen(true);
@@ -150,11 +127,10 @@ function Issue() {
           <div className="note__modal-title">
             <h3>Add note</h3>
           </div>
-
           <form onSubmit={onNoteSubmit}>
             <div className="form-group">
               <textarea
-                style={{ resize: "none" }}
+                style={{ resize: 'none' }}
                 name="noteText"
                 id="noteText"
                 className="form-control"
@@ -165,21 +141,17 @@ function Issue() {
                 onChange={(e) => setNoteText(e.target.value)}
               ></textarea>
             </div>
-
             <div className="form-group">
-              <button className="btn">
-                <FaRegPaperPlane /> Send
-              </button>
+              <button className="btn">Create note</button>
             </div>
           </form>
         </Modal>
       )}
-
       {notes.map((note) => (
         <NoteItem key={note._id} note={note} />
       ))}
       <div className="pb-sm ">
-        {issue.status !== "fixed" && (
+        {issue.status !== 'fixed' && (
           <button onClick={onIssueClose} className="btn btn-block btn-hover ">
             Close Issue
           </button>
