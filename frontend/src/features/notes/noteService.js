@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 //root url
-const API_URL = "/api/issues/";
+const API_URL = '/api/issues/';
 
 //Get issue notes
 const getNotes = async (issueId, token) => {
@@ -12,7 +12,7 @@ const getNotes = async (issueId, token) => {
     },
   };
 
-  const response = await axios.get(API_URL + issueId + "/notes", config);
+  const response = await axios.get(API_URL + issueId + '/notes', config);
 
   //return response data
   return response.data;
@@ -29,7 +29,7 @@ const createNote = async (noteText, issueId, token) => {
 
   //
   const response = await axios.post(
-    API_URL + issueId + "/notes",
+    API_URL + issueId + '/notes',
     { text: noteText },
     config
   );

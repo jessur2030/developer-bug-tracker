@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 //url
-const API_URL = "/api/issues/";
+const API_URL = '/api/issues/';
 
 //Create new issue
 const createIssue = async (issueData, token) => {
@@ -59,7 +59,7 @@ const closeIssue = async (issueId, token) => {
 
   const response = await axios.put(
     API_URL + issueId,
-    { status: "fixed" },
+    { status: 'fixed' },
     config
   );
 
