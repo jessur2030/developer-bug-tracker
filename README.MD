@@ -2,7 +2,7 @@
 
 Bug Tracker application built with the MERN stack.
 
-## [Live Site](https://jessusrbugtracker.herokuapp.com/)
+## [Live Site](https://bug-tracker-app-tugr.onrender.com)
 
 ## Usage
 
